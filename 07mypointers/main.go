@@ -10,7 +10,7 @@ func main() {
 	// fmt.Printf("The type of ptr is %T", ptr)
 
 	myNumber := 23
-	var ptr = &myNumber
+	ptr := &myNumber
 	fmt.Println("Value of actual pointer is", ptr)
 	fmt.Println("Value of actual pointer is", *ptr)
 
