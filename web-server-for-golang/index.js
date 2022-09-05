@@ -10,17 +10,17 @@ app.get('/', (req, res) => {
 })
 
 app.get('/get', (req, res) => {
-    res.status(200).json({ message: 'Hello from learncodeonline.in' });
+    res.status(200).json({ message: 'Hello' });
 })
 
 app.post('/post', (req, res) => {
     let myJson = req.body // your json
     res.status(200).send(myJson);
 })
+
 app.post('/postform', (req, res) => {
     res.status(200).send(JSON.stringify(req.body));
 })
-
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
