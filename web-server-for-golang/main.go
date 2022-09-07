@@ -4,13 +4,15 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"net/url"
 	"strings"
 )
 
 func main() {
 	fmt.Println("Welcome to web verb video - lco")
 	// PerformGetRequest()
-	PerformPostJsonRequest()
+	// PerformPostJsonRequest()
+	PerformPostFormRequest()
 }
 
 func PerformGetRequest() {
@@ -53,6 +55,26 @@ func PerformPostJsonRequest() {
 	fmt.Println("Content is: ", string(content))
 
 	defer res.Body.Close()
+
+}
+
+func PerformPostFormRequest() {
+	const myurl = "http://localhost:5000/postform"
+
+	// form data
+
+	data := url.Values{}
+	data.Add("firstname", "hitesh")
+	data.Add("lastname", "choudhary")
+	data.Add("email", "hitesh@go.dev")
+
+	response, err := http.PostForm(myurl, data)
+	checkNilErr(err)
+
+	content, _ := ioutil.ReadAll(response.Body)
+	fmt.Println("Content is: ", string(content))
+
+	defer response.Body.Close()
 
 }
 
